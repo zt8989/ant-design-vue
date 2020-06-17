@@ -8,6 +8,7 @@ import {
   getOptionProps,
   filterEmpty,
   isValidElement,
+  getListeners,
 } from '../_util/props-util';
 import Icon from '../icon';
 import { cloneElement } from '../_util/vnode';
@@ -117,21 +118,13 @@ const Select = {
   created() {
     warning(
       this.$props.mode !== 'combobox',
+      'Select',
       'The combobox mode of Select is deprecated,' +
         'it will be removed in next major version,' +
         'please use AutoComplete instead',
     );
   },
   methods: {
-    savePopupRef(ref) {
-      this.popupRef = ref;
-    },
-    focus() {
-      this.$refs.vcSelect.focus();
-    },
-    blur() {
-      this.$refs.vcSelect.blur();
-    },
     getNotFoundContent(renderEmpty) {
       const h = this.$createElement;
       const notFoundContent = getComponentFromProp(this, 'notFoundContent');
@@ -143,6 +136,16 @@ const Select = {
       }
       return renderEmpty(h, 'Select');
     },
+    savePopupRef(ref) {
+      this.popupRef = ref;
+    },
+    focus() {
+      this.$refs.vcSelect.focus();
+    },
+    blur() {
+      this.$refs.vcSelect.blur();
+    },
+
     isCombobox() {
       const { mode } = this;
       return mode === 'combobox' || mode === SECRET_COMBOBOX_MODE_DO_NOT_USE;
@@ -170,6 +173,7 @@ const Select = {
       mode,
       options,
       getPopupContainer,
+      showArrow,
       ...restProps
     } = getOptionProps(this);
 
@@ -197,6 +201,7 @@ const Select = {
     const cls = {
       [`${prefixCls}-lg`]: size === 'large',
       [`${prefixCls}-sm`]: size === 'small',
+      [`${prefixCls}-show-arrow`]: showArrow,
     };
 
     let { optionLabelProp } = this.$props;
@@ -233,6 +238,7 @@ const Select = {
         removeIcon: finalRemoveIcon,
         clearIcon: finalClearIcon,
         menuItemSelectedIcon: finalMenuItemSelectedIcon,
+        showArrow,
         ...rest,
         ...modeConfig,
         prefixCls,
@@ -254,7 +260,7 @@ const Select = {
         dropdownRender: getComponentFromProp(this, 'dropdownRender', {}, false),
         getPopupContainer: getPopupContainer || getContextPopupContainer,
       },
-      on: this.$listeners,
+      on: getListeners(this),
       class: cls,
       ref: 'vcSelect',
     };

@@ -67,17 +67,23 @@ export declare class Drawer extends AntdComponent {
   wrapClassName: string;
 
   /**
-   * The style of the container of the Drawer dialog.
+   * Style of wrapper element which **contains mask** compare to `drawerStyle`
    * @type object
    */
   wrapStyle: object;
+
+  /**
+   * Style of the popup layer element
+   * @type object
+   */
+  drawerStyle: object;
 
   /**
    * Style of floating layer, typically used for adjusting its position.
    * @type object
    */
   bodyStyle: object;
-
+  headerStyle: object;
   /**
    * Width of the Drawer dialog.
    * @default 256
@@ -104,7 +110,8 @@ export declare class Drawer extends AntdComponent {
    * @type string
    */
   placement: 'top' | 'right' | 'bottom' | 'left';
-
+  afterVisibleChange?: (visible: boolean) => void;
+  keyboard?: boolean;
   /**
    * Specify a callback that will be called when a user clicks mask, close button or Cancel button.
    */

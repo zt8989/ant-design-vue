@@ -4,8 +4,14 @@
 
 import { AntdComponent } from './component';
 import { Moment } from 'moment';
-
+export interface RenderHeader {
+  value: Moment;
+  onChange?: (value: Moment) => void;
+  type: string;
+  onTypeChange: (type: string) => void;
+}
 export declare class Calendar extends AntdComponent {
+  headerRender: (headerRender: RenderHeader) => any;
   /**
    * Customize the display of the date cell by setting a scoped slot,
    * the returned content will be appended to the cell
@@ -25,7 +31,7 @@ export declare class Calendar extends AntdComponent {
    * @default default date
    * @type Moment
    */
-  defaultValue: Moment;
+  defaultValue: Moment | string;
 
   /**
    * Function that specifies the dates that cannot be selected
@@ -78,5 +84,6 @@ export declare class Calendar extends AntdComponent {
    * @default current date
    * @type Moment
    */
-  value: Moment;
+  value: Moment | string;
+  valueFormat: string;
 }

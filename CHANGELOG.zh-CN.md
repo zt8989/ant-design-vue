@@ -4,11 +4,232 @@
 
 #### 发布周期
 
-- 修订版本号：每周末会进行日常 bugfix 更新。（如果有紧急的 bugfix，则任何时候都可发布）
+- 修订版本号：日常 bugfix 更新
 - 次版本号：带有新特性的向下兼容的版本。
 - 主版本号：含有破坏性更新和新特性，不在发布周期内。
 
 ---
+
+## 1.6.2
+
+`2020-06-02`
+
+- 🐞 修复弹窗 dialogClass 类型错误 [#2298](https://github.com/vueComponent/ant-design-vue/issues/2298)
+- 🐞 修复 RangePicker 面板展示错误 [#2318](https://github.com/vueComponent/ant-design-vue/issues/2318)
+
+## 1.6.1
+
+`2020-05-25`
+
+- 🐞 修复 DatePicker blur 时填充当前时间的问题 [#2246](https://github.com/vueComponent/ant-design-vue/issues/2246)
+- 🐞 修复 Drawer 销毁时报错问题 [#2254](https://github.com/vueComponent/ant-design-vue/issues/2254)
+- 🐞 修复 Tabs 不能移除已 0 作为 key 的选项卡 [55bbf9](https://github.com/vueComponent/ant-design-vue/commit/55bbf940401cf2a67114102da1c035abc4152f06)
+- 🐞 修复 Menu 触发两次 click 事件的问题 [#2266](https://github.com/vueComponent/ant-design-vue/issues/2266)
+- 🐞 修复 Menu active 类名没有添加问题 [ffc002](https://github.com/vueComponent/ant-design-vue/commit/ffc002f09454a56b531aeb08530303d566cf24f2)
+- 🌟 TreeSelect 添加自定义数据字段功能 [#2253](https://github.com/vueComponent/ant-design-vue/issues/2253)
+- 🌟 Modal 新增 dialogStyle、dialogClass 代替重构前的 style、class [#2285](https://github.com/vueComponent/ant-design-vue/issues/2285)
+- 🐞 修复 Table 排序触发无限更新问题 [#2270](https://github.com/vueComponent/ant-design-vue/issues/2270)
+
+## 1.6.0
+
+`2020-05-15`
+
+- 🌟 Tootip 支持自定义组件 [741897](https://github.com/vueComponent/ant-design-vue/commit/741897be6742c752f0b0d29481add702ee7e7fb0)
+- 🐞 重构 Modal、Drawer 底层 Portal 组件，解决 Modal、Drawer 内容更新延迟问题 [#2244](https://github.com/vueComponent/ant-design-vue/issues/2244)
+- 🐞 修复 Input.Group 中 Select 选项 focus 边框样式 [#2224](https://github.com/vueComponent/ant-design-vue/pull/2224)
+- 🐞 修复 Cascader 选项图标禁用时的颜色 [#2223](https://github.com/vueComponent/ant-design-vue/pull/2223)
+- 🐞 修复 DatePicker 分隔符禁用时颜色 [#2222](https://github.com/vueComponent/ant-design-vue/pull/2222)
+- 🐞 修复 Carousel 键盘切换到非活跃 slide 上的 Radio/Checkbox 的问题。
+- 🐞 修复 Table 筛选菜单在 less 版本为 `2.x` 时不显示的问题。[#23272](https://github.com/ant-design/ant-design/pull/23272)
+- 🐞 修复 Table `column.filtered` 失效的问题。
+- 🐞 修复 Select `multiple` 模式下，Input 在 Safari 浏览器的样式问题。[#22586](https://github.com/ant-design/ant-design/pull/22586)
+- 🐞 修复 Descriptions 在小尺寸下无法自适应的问题。[#22407](https://github.com/ant-design/ant-design/pull/22407)
+
+## 1.5.6
+
+`2020-05-09`
+
+- 🐞 修复 dist 文件夹丢失 css、min.js 等文件问题
+
+## 1.5.5
+
+`2020-05-08`
+
+- 🐞 修复 `Tabs` 在 safari 13 下不展示问题 [#2199](https://github.com/vueComponent/ant-design-vue/issues/2199)
+- 🐞 修复 `Input` 在 FireFox 下第一次输入失败问题 [#2151](https://github.com/vueComponent/ant-design-vue/issues/2151)
+- 🐞 修复 `Input` 在 Modal 组件中光标移位问题 [#2207](https://github.com/vueComponent/ant-design-vue/issues/2207)
+
+## 1.5.4
+
+`2020-04-30`
+
+- 🌟 `DatePicker` 支持 align 属性，设置弹窗位置 [#1112f2](https://github.com/vueComponent/ant-design-vue/commit/1112f2f791fd64866284ec82def90baefe81e798)
+- 🌟 `DatePicker` 支持 inputReadOnly 属性 [#138eae](https://github.com/vueComponent/ant-design-vue/commit/138eae594dd440ce815e45d811a0778cb3e7583f)
+- 🌟 `DatePicker` `TimePicker` `Calendar` 支持字符串类型的绑定值 [#718](https://github.com/vueComponent/ant-design-vue/issues/718)
+- 🌟 `Table` `ConfigProvider` 新增 `transformCellText` 用于转换表格渲染值, 如对空数据的处理 [#2109](https://github.com/vueComponent/ant-design-vue/issues/2109)
+- 🌟 `FormModel` 新增 validateMessages 属性 [#2130](https://github.com/vueComponent/ant-design-vue/issues/2130)
+- 🌟 优化弹窗动画效果 [#bf52f73](https://github.com/vueComponent/ant-design-vue/commit/bf52f73c5c2f8d05981e426b41a5f46d66e096db)
+- 🐞 修复 `Tabs` 组件的 `tabBarGutter` 属性不生效问题 [#2083](https://github.com/vueComponent/ant-design-vue/issues/2083)
+- 🐞 修复 `Tabs` 组件的 renderTabBar 不生效问题 [#2157](https://github.com/vueComponent/ant-design-vue/issues/2157)
+- 🌟 `Tabs` 组件支持数字 0 作为 key [#2167](https://github.com/vueComponent/ant-design-vue/issues/2167)
+- 🐞 修复 `Input.Search` 组件的样式错位问题 [#2077](https://github.com/vueComponent/ant-design-vue/issues/2077)
+- 🐞 修复 `Slider` 组件的样式错位问题 [#2097](https://github.com/vueComponent/ant-design-vue/issues/2097)
+- 🐞 修复 `Tree.TreeNode` customTitle 作用域插槽无法获取 selected 状态问题 [#2006](https://github.com/vueComponent/ant-design-vue/issues/2006)
+- 🐞 修复 `SelectTree` showSearch 时报错问题 [#2082](https://github.com/vueComponent/ant-design-vue/issues/2082)
+- 🐞 修复 `Badge` dot 状态的原圆点位置不一致问题 [#2121](https://github.com/vueComponent/ant-design-vue/issues/2121)
+
+## 1.5.3
+
+`2020-04-13`
+
+- 🐞 修复 `Dropdown` visible 不变时，内容不响应更新的问题 [#81eb40](https://github.com/vueComponent/ant-design-vue/commit/81eb401a8899aa3fe0acca88340b323f6e09db45)
+
+## 1.5.2
+
+`2020-04-09`
+
+- 🐞 修复 `FormModel` 的 ts 类型未引入 [#1996](https://github.com/vueComponent/ant-design-vue/issues/1966)
+- 🐞 修复 `DatePicker.WeekPicker` 的类型文件错误 [#2044](https://github.com/vueComponent/ant-design-vue/issues/2044)
+- 🐞 修复 `Tabs` tabClick 事件不生效问题 [#2030](https://github.com/vueComponent/ant-design-vue/issues/2030)
+- 🐞 修复 `Table` resize 时报错问题 [#2033](https://github.com/vueComponent/ant-design-vue/issues/2033)
+
+## 1.5.1
+
+`2020-04-02`
+
+- 🐞 修复 `PageHeader` 不能隐藏 backIcon 问题 [#1987](https://github.com/vueComponent/ant-design-vue/pull/1987)
+- 🐞 修复 `Pagination` 的 total 变化时，不更新问题 [#1989](https://github.com/vueComponent/ant-design-vue/pull/1989)
+- 🐞 修复 `TreeSelect` 输入中文时 placeholder 不消失问题 [#1994](https://github.com/vueComponent/ant-design-vue/pull/1994)
+- 🐞 修复 `Table` customRender 不能自定义 class style 问题 [#2004](https://github.com/vueComponent/ant-design-vue/pull/2004)
+- 🐞 修复 `Form` 使用 Form.create 时，丢失插槽内容问题 [#1998](https://github.com/vueComponent/ant-design-vue/pull/1998)
+- 🐞 修复 `Textarea` 滚动条闪动问题 [#1964](https://github.com/vueComponent/ant-design-vue/pull/1964)
+- 🌟 添加 `FormModel` 的 ts 类型文件 [#1996](https://github.com/vueComponent/ant-design-vue/issues/1966)
+- 🌟 添加 `Modal` 的 destroyAll 类型声明 [#1993](https://github.com/vueComponent/ant-design-vue/pull/1963)
+
+## 1.5.0
+
+`2020-03-29`
+
+- 新增了五个组件：
+  - 🔥🔥🔥 [Mentions](https://antdv.com/components/mentions-cn/) 新增提及组件并废弃原有 Mention 组件。
+  - 🔥🔥🔥 [Descriptions](https://antdv.com/components/descriptions-cn/) 成组展示多个只读字段。
+  - 🔥🔥🔥 [PageHeader](https://antdv.com/components/page-header-cn/) 可用于声明页面主题、展示用户所关注的页面重要信息，以及承载与当前页相关的操作项。
+  - 🔥🔥🔥 [Result](https://antdv.com/components/result) 用于反馈一系列操作任务的处理结果。
+  - 🔥🔥🔥 [FormModel](https://antdv.com/components/form-model) 使用 v-model 进行自动校验的表单组件，相较于 v-decorator 形式的表单，更加简洁。
+- 🔥 Descriptions 支持垂直布局。
+- 🔥 Progress.Circle 支持渐变色。
+- 🔥 Progress.Line 支持渐变色。
+- Breadcrumb
+  - 🎉 Breadcrumb.Item 支持 `overlay` 属性来定义下拉菜单。
+  - 🌟 新增 `Breadcrumb.Separator` 组件，可进行 `separator` 自定义。
+- 🌟 TreeSelect 的 `showSearch` 支持多选模式。
+- 🌟 Timeline.Item 新增 `gray` 色彩类型，可用于未完成或失效状态。
+- 🌟 Modal 支持 `closeIcon` 属性用于自定义关闭图标。
+- 🌟 Upload
+  - 🌟 Upload 提供 `previewFile` 属性以自定义预览逻辑。
+  - 🌟 Upload 新增 `transformFile` 支持上传之前转换文件。
+  - 🌟 Upload 支持预览 `jfif` 格式图片。
+  - 🌟 新增 `showDownloadIcon` 属性，用于展示下载图标。
+- 🌟 Input.Search 新增 `loading` 属性，用于展示加载中的状态。
+- 🌟 Grid 的 `gutter` 属性新增垂直间距的支持，现在你可以给 `gutter` 设置一个数组，数组的第二个值就表示垂直间距。
+- 🌟 message 新增支持通过唯一的 `key` 来更新内容。
+- 🌟 TextArea 支持 `allowClear`。
+- 🌟 Dropdown.Button 支持 `icon` 属性来自定义图标。
+- Drawer
+  - 🌟 支持 `afterVisibleChange` 属性，在抽屉动画完成后触发。
+  - 🌟 支持 `ESC` 关闭。
+  - 🌟 新增 `keyboard`，允许打开关闭对键盘事件的响应。
+- 🌟 TreeNode 支持 `checkable` 属性。
+- 🌟 Transfer 支持 `children` 来自定义渲染列表。
+- 🌟 Pagination 支持 `disabled` 属性。
+- 🌟 Steps 支持点击切换功能。
+- Slider
+  - 🌟 支持 `tooltipPlacement` 以定义提示所在位置。
+  - 🌟 支持 `getTooltipPopupContainer` 以允许自定义提示所在容器。
+  - 🌟 当 Sider 在右边时，翻转 `trigger` 方向。
+- 🌟 Calendar 支持 `headerRender` 以自定义头部。
+- 🌟 Carousel 支持自定义面板指示点的位置。
+- 🌟 Collapse 支持 `expandIconPosition` 属性。
+- 🌟 Popconfirm 增加 `disabled` props，用于控制点击子元素是否弹出。
+- 🌟 Select 在多选模式下支持 `showArrow`。
+- 🌟 Collapse.Panel 新增了 `extra`。
+- Card
+  - 🌟 Card 组件新增了 `tabBarExtraContent` 属性。
+  - 🌟 Card.Grid 新增 `hoverable` 属性允许禁用浮动效果。
+- 🌟 Anchor.Link 增加 `target` 属性。
+- 🌟 TimePicker 新增了 `clearIcon` prop，用于自定义清除图标。
+- Form
+  - 🌟 支持直接在 Form 上面配置 `colon` 属性。
+  - 🌟 支持 `labelAlign` 属性。
+- Table
+  - 🌟 Table 新增 `getPopupContainer` 属性用于设置表格内的各类浮层渲染节点。
+  - 💄 调整 Table 展开按钮的样式。
+  - 🌟 新增 `tableLayout` 属性，支持设置表格的 `table-layout` 布局，并在固定表头/列下默认开启 `tableLayout="fixed"`，解决因为表格自动根据内容排版造成的列对齐问题。
+  - 🌟 新增 `column.ellipsis` 支持单元格内容自动省略。
+  - 🌟 新增 `scroll.scrollToFirstRowOnChange` 属性，用于设置在翻页后是否滚动到表格顶部。
+  - 🌟 `filterDropdown` 新增 `visible` 参数，用于获取下拉框的显示状态。
+  - 🌟 `title` 方法新增 `sortColumn` 参数，用于获取当前排序的列。
+  - 🌟 排序时 `onChange` 的 `sorter` 参数将始终包含 `column` 信息。
+- 🌟 Tree 组件支持 `blockNode` 属性。
+- 🌟 RangePicker 添加 `separator` 定义。
+- Empty
+  - 🌟 Empty 支持 `imageStyle` 属性。
+  - 🌟 Empty `description` 支持 `false`。
+  - 🌟 Empty 支持通过 `Empty.PRESENTED_IMAGE_DEFAULT` 和 `Empty.PRESENTED_IMAGE_SIMPLE` 访问预置图片。
+- 🌟 Badge 支持自定义颜色。
+- 🐞 修复 Steps 的 label 不居中的问题。
+- 🐞 修复 DatePicker 和 TimePicker 的 cursor 样式问题。
+- 🐞 修复 TreeSelect 自定义图标无效的问题 [#1901](https://github.com/vueComponent/ant-design-vue/issues/1901)
+- 🐞 修复 Tabs 键盘左右切换错误问题 [#1947](https://github.com/vueComponent/ant-design-vue/issues/1947)
+
+## 1.4.12
+
+`2020-03-03`
+
+- 🐞 修复 `Modal` 组件 ts 类型报错问题 [#1809](https://github.com/vueComponent/ant-design-vue/issues/1809)
+
+## 1.4.11
+
+`2020-02-12`
+
+- 🌟 DirectoryTree 新增自定义 switcherIcon 功能 [#1743](https://github.com/vueComponent/ant-design-vue/issues/1743)
+- 🌟 新增可拖拽调整表格列宽[示例](https://www.antdv.com/components/table/#components-table-demo-resizable-column)
+- 🌟 替换所有组件的 `this.$listeners` 避免组件重复渲染 [#1705](https://github.com/vueComponent/ant-design-vue/issues/1705)
+- 🐞 修复 ConfigProvider 组件更改属性时，报错问题 [7a4003](https://github.com/vueComponent/ant-design-vue/commit/7a40031955d520487dcaf9054a1280ae72230049)
+- 🐞 修复 AutoComplete 组件自定义输入框时，placeholder 不消失问题 [#1761](https://github.com/vueComponent/ant-design-vue/issues/1761)
+- 🐞 修复 Statistic.Countdown 不触发 finish 事件的问题 [#1731](https://github.com/vueComponent/ant-design-vue/pull/1731)
+- 🐞 修复 Upload 组件预览图片不刷新问题 [f74469](https://github.com/vueComponent/ant-design-vue/commit/f744690e929d9d6da03c5c513b3ac5497c6490ef)
+- 🐞 修复 TimePicker id 不唯一问题 [#1566](https://github.com/vueComponent/ant-design-vue/pull/1566)
+- 🐞 修复 Pagination 分页无动画问题 [#1540](https://github.com/vueComponent/ant-design-vue/issues/1540)
+- 🐞 修复 Cascader 的 option 为空数组时,下拉列表不展示空元素问题 [#1701](https://github.com/vueComponent/ant-design-vue/issues/1540)
+- 🐞 修复 Input 组件的 spellcheck 渲染不正确问题 [#1707](https://github.com/vueComponent/ant-design-vue/issues/1707)
+- 🐞 修复 Tree 组件无法自定义 icon 问题 [#1712](https://github.com/vueComponent/ant-design-vue/pull/1712)
+- 🐞 修复 SubMenu forceSubMenuRender 属性失效问题 [#1668](https://github.com/vueComponent/ant-design-vue/issues/1668)
+- 🐞 修复 Upload 按钮样式错位问题 [#1742](https://github.com/vueComponent/ant-design-vue/pull/1742)
+
+## 1.4.10
+
+`2019-12-11`
+
+- 🐞 修复 `MonthPicker` 左右箭头切换月份失效问题 [#1543](https://github.com/vueComponent/ant-design-vue/issues/1543)
+
+## 1.4.9
+
+`2019-12-10`
+
+- 🐞 修复 `Modal` 打开时，body 滚动问题 [#1472](https://github.com/vueComponent/ant-design-vue/issues/1472)
+- 🐞 修复 `Drawer` wrapStyle 不生效问题 [#1481](https://github.com/vueComponent/ant-design-vue/issues/1481)
+- 🐞 修复 `InputNumber` id 挂载位置不正确的问题 [#1477](https://github.com/vueComponent/ant-design-vue/issues/1477)
+- 🐞 修复 `Tabs` nextClick 事件不触发的问题 [#1489](https://github.com/vueComponent/ant-design-vue/pull/1489)
+- 🐞 修复 `MonthPicker` 在 open 状态下，不能更改值的问题 [#1510](https://github.com/vueComponent/ant-design-vue/issues/1510)
+- 🐞 修复 `AutoComplete` 在输入中文时 `placeholder` 不消失的问题 [#1506](https://github.com/vueComponent/ant-design-vue/issues/1506)
+- 🐞 修复在引用不同 Vue 变量时，无法弹出内容的问题 [6362bf](https://github.com/vueComponent/ant-design-vue/commit/6362bf9edb441c0c0096beca1d2c8727003dbb15)
+- 🌟 `Table` `customRender` 添加第三个 column 参数 [#1513](https://github.com/vueComponent/ant-design-vue/pull/1513)
+- 🌟 `InputPassword` 添加 focus、blur 方法 [#1485](https://github.com/vueComponent/ant-design-vue/pull/1485)
+- 🐞 修复 `Tooltip` 使用在原生 html 元素时报错的问题 [#1519](https://github.com/vueComponent/ant-design-vue/issues/1519)
+- 🐞 修复 `Menu` 在 edge 浏览器下报错的问题 [#1492](https://github.com/vueComponent/ant-design-vue/issues/1492)
+- 🐞 修复 `Select` 的 empty 不居中的问题 [#1445](https://github.com/vueComponent/ant-design-vue/pull/1445)
+- 🐞 修复弹窗类组件内存泄漏问题 [#1483](https://github.com/vueComponent/ant-design-vue/pull/1483)
 
 ## 1.4.8
 
@@ -341,12 +562,10 @@
 - 🎉 🎉 🎉 发布 vscode 插件 [ant-design-vue-helper](https://marketplace.visualstudio.com/items?itemName=ant-design-vue.vscode-ant-design-vue-helper)
 - 🎉 🎉 🎉 优化官网文档交互
 
-### 组件功能和样式同步到 antd 3.11.6 版本。
+  1.3.0 版本带来了两个新组件，还有很多激动人心的变化和新特性。
 
-1.3.0 版本带来了两个新组件，还有很多激动人心的变化和新特性。
-
-- 🔥 增加了一个新组件 [Comment](https://vue.ant.design/components/comment-cn/)。
-- 🔥 增加了一个新组件 [ConfigProvider](https://vue.ant.design/components/config-provider-cn/) 为组件提供统一的全局化配置。
+- 🔥 增加了一个新组件 [Comment](https://www.antdv.com/components/comment-cn/)。
+- 🔥 增加了一个新组件 [ConfigProvider](https://www.antdv.com/components/config-provider-cn/) 为组件提供统一的全局化配置。
 
 组件修复/功能增强：
 
@@ -432,8 +651,6 @@
 ## 1.2.0
 
 `2018-12-16`
-
-### 与 antd 3.10.x 同步
 
 - 🔥🔥🔥 使用了 svg 图标替换了原先的 font 图标，从而带来了以下优势：
   - 可以离线化使用，不需要从支付宝 cdn 下载字体文件，图标不会因为网络问题呈现方块，也无需字体文件本地部署。

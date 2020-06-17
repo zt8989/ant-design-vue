@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use strict';
 
 // const install = require('./install')
@@ -10,7 +11,7 @@ const transformLess = require('./transformLess');
 const webpack = require('webpack');
 const babel = require('gulp-babel');
 const argv = require('minimist')(process.argv.slice(2));
-const GitHub = require('@octokit/rest');
+const { Octokit } = require('@octokit/rest');
 
 const packageJson = require(`${process.cwd()}/package.json`);
 // const getNpm = require('./getNpm')
@@ -34,7 +35,7 @@ const esDir = path.join(cwd, 'es');
 function dist(done) {
   rimraf.sync(path.join(cwd, 'dist'));
   process.env.RUN_ENV = 'PRODUCTION';
-  const webpackConfig = require(path.join(cwd, 'webpack.build.config.js'));
+  const webpackConfig = require(path.join(cwd, 'webpack.build.conf.js'));
   webpack(webpackConfig, (err, stats) => {
     if (err) {
       console.error(err.stack || err);
@@ -167,10 +168,8 @@ function githubRelease(done) {
     console.log('no changelog found, skip');
     return;
   }
-  const github = new GitHub();
-  github.authenticate({
-    type: 'oauth',
-    token: process.env.GITHUB_TOKEN,
+  const github = new Octokit({
+    auth: process.env.GITHUB_TOKEN,
   });
   const date = new Date();
   const { version } = packageJson;
@@ -295,11 +294,12 @@ gulp.task(
 gulp.task(
   'pub',
   gulp.series('check-git', 'compile', done => {
-    if (!process.env.GITHUB_TOKEN) {
-      console.log('no GitHub token found, skip');
-    } else {
-      pub(done);
-    }
+    // if (!process.env.GITHUB_TOKEN) {
+    //   console.log('no GitHub token found, skip');
+    // } else {
+    //   pub(done);
+    // }
+    pub(done);
   }),
 );
 
@@ -309,10 +309,8 @@ gulp.task(
     if (!process.env.NPM_TOKEN) {
       console.log('no NPM token found, skip');
     } else {
-      const github = new GitHub();
-      github.authenticate({
-        type: 'oauth',
-        token: process.env.GITHUB_TOKEN,
+      const github = new Octokit({
+        auth: process.env.GITHUB_TOKEN,
       });
       const [_, owner, repo] = execSync('git remote get-url origin') // eslint-disable-line
         .toString()
@@ -335,6 +333,7 @@ gulp.task(
           newVersion &&
           newVersion.trim() === version
         ) {
+          // eslint-disable-next-line no-unused-vars
           runCmd('npm', ['run', 'pub'], code => {
             done();
           });

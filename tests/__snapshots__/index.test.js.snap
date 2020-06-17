@@ -27,6 +27,7 @@ Array [
   "Divider",
   "Dropdown",
   "Form",
+  "FormModel",
   "Icon",
   "Input",
   "InputNumber",
@@ -34,6 +35,7 @@ Array [
   "List",
   "LocaleProvider",
   "Menu",
+  "Mentions",
   "Modal",
   "Pagination",
   "Popconfirm",
@@ -63,6 +65,9 @@ Array [
   "Comment",
   "ConfigProvider",
   "Empty",
+  "Result",
+  "Descriptions",
+  "PageHeader",
   "default",
 ]
 `;

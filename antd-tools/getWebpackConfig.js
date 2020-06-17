@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const webpackMerge = require('webpack-merge');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -132,8 +132,10 @@ function getWebpackConfig(modules) {
             {
               loader: 'less-loader',
               options: {
-                sourceMap: true,
-                javascriptEnabled: true,
+                lessOptions: {
+                  sourceMap: true,
+                  javascriptEnabled: true,
+                },
               },
             },
           ],
@@ -182,13 +184,8 @@ All rights reserved.
     config.output.libraryTarget = 'umd';
     config.optimization = {
       minimizer: [
-        new UglifyJsPlugin({
-          cache: true,
-          parallel: true,
+        new TerserPlugin({
           sourceMap: true,
-          uglifyOptions: {
-            warnings: false,
-          },
         }),
       ],
     };

@@ -4,10 +4,12 @@ import Input from '..';
 import Form from '../../form';
 import focusTest from '../../../tests/shared/focusTest';
 
-const { TextArea } = Input;
+const { TextArea, Password } = Input;
 
 describe('Input', () => {
   focusTest(Input);
+  focusTest(TextArea);
+  focusTest(Password);
 
   it('should support maxLength', async () => {
     const wrapper = mount(Input, { attrs: { maxLength: 3 }, sync: false });
@@ -34,11 +36,11 @@ focusTest(TextArea);
 describe('TextArea', () => {
   it('should auto calculate height according to content length', async () => {
     const wrapper = mount(TextArea, {
-      propsData: { value: '', readOnly: true, autosize: true },
+      propsData: { value: '', readOnly: true, autoSize: true },
       sync: false,
     });
 
-    const mockFunc = jest.spyOn(wrapper.vm, 'resizeTextarea');
+    const mockFunc = jest.spyOn(wrapper.vm.$refs.resizableTextArea, 'resizeTextarea');
     await asyncExpect(() => {
       wrapper.setProps({ value: '1111\n2222\n3333' });
     });

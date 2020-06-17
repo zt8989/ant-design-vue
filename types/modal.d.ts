@@ -112,6 +112,9 @@ export interface ModalOptions {
    */
   zIndex?: number;
 
+  dialogStyle?: object;
+  dialogClass?: string;
+
   /**
    * Specify a function that will be called when the user clicks the Cancel button.
    * The parameter of this function is a function whose execution should include closing the dialog.
@@ -127,6 +130,8 @@ export interface ModalOptions {
    * @type Function
    */
   onOk?: () => any;
+
+  parentContext?: object;
 }
 
 export interface ModalConfirm {
@@ -176,6 +181,8 @@ export declare class Modal extends AntdComponent {
    * @type boolean
    */
   closable: boolean;
+
+  closeIcon: any;
 
   /**
    * Whether to apply loading visual effect for OK button or not
@@ -290,6 +297,7 @@ export declare class Modal extends AntdComponent {
   static error(options: ModalOptions): ModalConfirm;
   static warning(options: ModalOptions): ModalConfirm;
   static confirm(options: ModalOptions): ModalConfirm;
+  static destroyAll(): void;
 }
 
 declare module 'vue/types/vue' {

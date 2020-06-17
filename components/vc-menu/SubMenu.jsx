@@ -6,7 +6,7 @@ import { connect } from '../_util/store';
 import SubPopupMenu from './SubPopupMenu';
 import placements from './placements';
 import BaseMixin from '../_util/BaseMixin';
-import { getComponentFromProp, filterEmpty } from '../_util/props-util';
+import { getComponentFromProp, filterEmpty, getListeners } from '../_util/props-util';
 import { requestAnimationTimeout, cancelAnimationTimeout } from '../_util/requestAnimationTimeout';
 import { noop, loopMenuItemRecursively, getMenuIdFromSubMenuEventKey } from './util';
 import getTransitionProps from '../_util/getTransitionProps';
@@ -67,9 +67,10 @@ const SubMenu = {
       'inline',
     ]).def('vertical'),
     manualRef: PropTypes.func.def(noop),
-    builtinPlacements: PropTypes.object.def({}),
+    builtinPlacements: PropTypes.object.def(() => ({})),
     itemIcon: PropTypes.any,
     expandIcon: PropTypes.any,
+    subMenuKey: PropTypes.string,
   },
   mixins: [BaseMixin],
   isSubMenu: true,
@@ -171,6 +172,7 @@ const SubMenu = {
       if (isOpen && (keyCode === KeyCode.UP || keyCode === KeyCode.DOWN)) {
         return menu.onKeyDown(e);
       }
+      return undefined;
     },
 
     onPopupVisibleChange(visible) {
@@ -333,7 +335,7 @@ const SubMenu = {
 
     renderChildren(children) {
       const props = this.$props;
-      const { select, deselect, openChange } = this.$listeners;
+      const { select, deselect, openChange } = getListeners(this);
       const subPopupMenuProps = {
         props: {
           mode: props.mode === 'horizontal' ? 'vertical' : props.mode,
@@ -368,7 +370,7 @@ const SubMenu = {
           deselect,
           openChange,
         },
-        id: this._menuId,
+        id: this.internalMenuId,
       };
       const baseProps = subPopupMenuProps.props;
       const haveRendered = this.haveRendered;
@@ -416,7 +418,7 @@ const SubMenu = {
 
   render() {
     const props = this.$props;
-    const { rootPrefixCls, parentMenu, $listeners = {} } = this;
+    const { rootPrefixCls, parentMenu } = this;
     const isOpen = props.isOpen;
     const prefixCls = this.getPrefixCls();
     const isInlineMode = props.mode === 'inline';
@@ -429,11 +431,11 @@ const SubMenu = {
       [this.getSelectedClassName()]: this.isChildrenSelected(),
     };
 
-    if (!this._menuId) {
+    if (!this.internalMenuId) {
       if (props.eventKey) {
-        this._menuId = `${props.eventKey}$Menu`;
+        this.internalMenuId = `${props.eventKey}$Menu`;
       } else {
-        this._menuId = `$__$${++guid}$Menu`;
+        this.internalMenuId = `$__$${++guid}$Menu`;
       }
     }
 
@@ -466,7 +468,7 @@ const SubMenu = {
     // since corresponding node cannot be found
     if (isOpen) {
       ariaOwns = {
-        'aria-owns': this._menuId,
+        'aria-owns': this.internalMenuId,
       };
     }
     const titleProps = {
@@ -504,7 +506,7 @@ const SubMenu = {
     const popupAlign = props.popupOffset ? { offset: props.popupOffset } : {};
     const popupClassName = props.mode === 'inline' ? '' : props.popupClassName;
     const liProps = {
-      on: { ...omit($listeners, ['click']), ...mouseEvents },
+      on: { ...omit(getListeners(this), ['click']), ...mouseEvents },
       class: className,
     };
 

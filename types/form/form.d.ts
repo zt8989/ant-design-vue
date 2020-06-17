@@ -298,6 +298,12 @@ export interface WrappedFormUtils {
 
 export interface IformCreateOption {
   /**
+   * Set prefix for the form fields id
+   * @type string
+   */
+  name?: string;
+
+  /**
    * Only supports the use of Form.create({})(CustomizedForm). declare props on form(like vue props)
    * @type object
    */
@@ -383,13 +389,16 @@ export declare class Form extends AntdComponent {
    */
   options: object;
 
-  createForm(context: Vue, options?: IformCreateOption): any;
+  createForm(context: Vue, options?: IformCreateOption): WrappedFormUtils;
 
   /**
    * Convert props to field value
    * @param field
    */
   createFormField(field: any): any;
+  colon: boolean;
+  labelAlign: 'left' | 'right';
+  selfUpdate: boolean;
 }
 
 declare module 'vue/types/vue' {

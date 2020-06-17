@@ -1,14 +1,233 @@
-# Change Log
+# Change Log (The following content is translated by Google)
 
 `ant-design-vue` strictly follows [Semantic Versioning 2.0.0](http://semver.org/).
 
 #### Release Schedule
 
-- Weekly release: patch version at the end of every week for routine bugfix (anytime for urgent bugfix).
+- Weekly release: patch version for routine bugfix.
 - Monthly release: minor version for new features.
 - Major version release is not included in this schedule for breaking change and new features.
 
 ---
+
+## 1.6.2
+
+`2020-06-02`
+
+- 🐞 Fix dialogClass type error [#2298](https://github.com/vueComponent/ant-design-vue/issues/2298)
+- 🐞 Fix RangePicker panel display error [#2318](https://github.com/vueComponent/ant-design-vue/issues/2318)
+
+## 1.6.1
+
+`2020-05-25`
+
+- 🐞 Fix the problem of filling the current time when DatePicker blur [#2246](https://github.com/vueComponent/ant-design-vue/issues/2246)
+- 🐞 Fix Drawer error when destroying [#2254](https://github.com/vueComponent/ant-design-vue/issues/2254)
+- 🐞 Fix Tabs cannot remove tabs with 0 as key [55bbf9](https://github.com/vueComponent/ant-design-vue/commit/55bbf940401cf2a67114102da1c035abc4152f06)
+- 🐞 Fix Menu trigger twice click event [#2266](https://github.com/vueComponent/ant-design-vue/issues/2266)
+- 🐞 Fix Menu active class name is not added [ffc002](https://github.com/vueComponent/ant-design-vue/commit/ffc002f09454a56b531aeb08530303d566cf24f2)
+- 🌟 TreeSelect add custom data field function [#2253](https://github.com/vueComponent/ant-design-vue/issues/2253)
+- 🌟 Modal added dialogStyle and dialogClass instead of style and class before refactoring [#2285](https://github.com/vueComponent/ant-design-vue/issues/2285)
+- 🐞 Fix Table sorting trigger infinite update issue [#2270](https://github.com/vueComponent/ant-design-vue/issues/2270)
+
+## 1.6.0
+
+`2020-05-15`
+
+- 🌟 Tootip supports custom components [741897](https://github.com/vueComponent/ant-design-vue/commit/741897be6742c752f0b0d29481add702ee7e7fb0)
+- 🐞 Refactor Modal's underlying Portal components to solve the problem of delayed content update in Modal [#2244](https://github.com/vueComponent/ant-design-vue/issues/2244)
+- 🐞 Fix Select option focus border style in Input.Group [#2224](https://github.com/vueComponent/ant-design-vue/pull/2224)
+- 🐞 Fix Cascader option icon color when disabled [#2223](https://github.com/vueComponent/ant-design-vue/pull/2223)
+- 🐞 Fix DatePicker color when separator is disabled [#2222](https://github.com/vueComponent/ant-design-vue/pull/2222)
+- 🐞 Fix Carousel keyboard switch to Radio / Checkbox on inactive slide.
+- 🐞 Fix the problem that Table filter menu is not displayed when less version is `2.x`. [#23272](https://github.com/ant-design/ant-design/pull/23272)
+- 🐞 Fix the failure of Table `column.filtered`.
+- 🐞 Fix the style problem of Input in Safari browser in Select `multiple` mode. [#22586](https://github.com/ant-design/ant-design/pull/22586)
+- 🐞 Fix the problem that Descriptions can not adapt in small size. [#22407](https://github.com/ant-design/ant-design/pull/22407)
+
+## 1.5.6
+
+`2020-05-09`
+
+- 🐞 Fix the problem of missing css, min.js and other files in the dist folder
+
+## 1.5.5
+
+`2020-05-08`
+
+- 🐞 Fix `Tabs` not showing issue under safari 13 [#2199](https://github.com/vueComponent/ant-design-vue/issues/2199)
+- 🐞 Fix the first input failure of `Input` under FireFox [#2151](https://github.com/vueComponent/ant-design-vue/issues/2151)
+- 🐞 Fix `Input` cursor shift issue in Modal component [#2207](https://github.com/vueComponent/ant-design-vue/issues/2207)
+
+## 1.5.4
+
+`2020-04-30`
+
+- 🌟 `DatePicker` supports the align attribute and sets the popup position [#1112f2](https://github.com/vueComponent/ant-design-vue/commit/1112f2f791fd64866284ec82def90baefe81e798)
+- 🌟 `DatePicker` supports inputReadOnly attribute [#138eae](https://github.com/vueComponent/ant-design-vue/commit/138eae594dd440ce815e45d811a0778cb3e7583f)
+- 🌟 `DatePicker` `TimePicker` `Calendar` supports string-type binding values ​​[#718](https://github.com/vueComponent/ant-design-vue/issues/718)
+- 🌟 `Table` `ConfigProvider` adds `transformCellText` for transforming table rendering values, such as processing of empty data [#2109](https://github.com/vueComponent/ant-design-vue/issues/2109)
+- 🌟 `FormModel` added validateMessages attribute [#2130](https://github.com/vueComponent/ant-design-vue/issues/2130)
+- 🌟 Optimize pop-up window animation effect [#bf52f73](https://github.com/vueComponent/ant-design-vue/commit/bf52f73c5c2f8d05981e426b41a5f46d66e096db)
+- 🐞 Fix the `tabBarGutter` attribute of the `Tabs` component does not take effect [#2083](https://github.com/vueComponent/ant-design-vue/issues/2083)
+- 🐞 Fix renderTabBar of `Tabs` component not working [#2157](https://github.com/vueComponent/ant-design-vue/issues/2157)
+- 🌟 `Tabs` component supports number 0 as key [#2167](https://github.com/vueComponent/ant-design-vue/issues/2167)
+- 🐞 Fix the style of the Input.Search component is misaligned [#2077](https://github.com/vueComponent/ant-design-vue/issues/2077)
+- 🐞 Fix the style misalignment of `Slider` component [#2097](https://github.com/vueComponent/ant-design-vue/issues/2097)
+- 🐞 Fix `Tree.TreeNode` customTitle scope slot can not get selected status issue [#2006](https://github.com/vueComponent/ant-design-vue/issues/2006)
+- 🐞 Fix `SelectTree` showSearch error when reporting [#2082](https://github.com/vueComponent/ant-design-vue/issues/2082)
+- 🐞 Fix the inconsistent position of original dots in `Badge` dot state [#2121](https://github.com/vueComponent/ant-design-vue/issues/2121)
+
+## 1.5.3
+
+`2020-04-13`
+
+- 🐞 Fix the problem that the content does not respond to updates when `Dropdown` visible is unchanged [#81eb40](https://github.com/vueComponent/ant-design-vue/commit/81eb401a8899aa3fe0acca88340b323f6e09db45)
+
+## 1.5.2
+
+`2020-04-09`
+
+- 🐞 Fix ts type of `FormModel` not introduced [#1996](https://github.com/vueComponent/ant-design-vue/issues/1966)
+- 🐞 Fix `DatePicker.WeekPicker` type file error [#2044](https://github.com/vueComponent/ant-design-vue/issues/2044)
+- 🐞 Fix "Tabs" tabClick event does not take effect [#2030](https://github.com/vueComponent/ant-design-vue/issues/2030)
+- 🐞 Fix `Table` resize error issue [#2033](https://github.com/vueComponent/ant-design-vue/issues/2033)
+
+## 1.5.1
+
+`2020-04-02`
+
+- 🐞 Fix `PageHeader` cannot hide backIcon [#1987](https://github.com/vueComponent/ant-design-vue/pull/1987)
+- 🐞 Fix `Pagination` doesn't update when total changes [#1989](https://github.com/vueComponent/ant-design-vue/pull/1989)
+- 🐞 Fix placeholder does not disappear when inputting `TreeSelect` in Chinese [#1994](https://github.com/vueComponent/ant-design-vue/pull/1994)
+- 🐞 Fix `Table` customRender cannot customize class style [#2004](https://github.com/vueComponent/ant-design-vue/pull/2004)
+- 🐞 Fix `Form` missing slot content when using Form.create [#1998](https://github.com/vueComponent/ant-design-vue/pull/1998)
+- 🐞 Fix `Textarea` scroll bar flickering problem [#1964](https://github.com/vueComponent/ant-design-vue/pull/1964)
+- 🌟 Add ts type file of `FormModel` [#1996](https://github.com/vueComponent/ant-design-vue/issues/1966)
+- 🌟 Add `modal` destroyAll type declaration [#1993](https://github.com/vueComponent/ant-design-vue/pull/1963)
+
+## 1.5.0
+
+`2020-03-29`
+
+- Four new components have been added:
+  - 🔥🔥🔥 [Mentions](https://antdv.com/components/mentions/) Added mentioned components and discarded the original Mention components.
+  - 🔥🔥🔥 [Descriptions](https://antdv.com/components/descriptions/) Display multiple read-only fields in groups.
+  - 🔥🔥🔥 [PageHeader](https://antdv.com/components/page-header/) can be used to declare the topic of the page, display important information about the page that the user is concerned about, and carry the operation items related to the current page.
+  - 🔥🔥🔥 [Result](https://antdv.com/components/result) is used to feedback the processing results of a series of operation tasks.
+  - 🔥🔥🔥 [FormModel](https://antdv.com/components/form-model) Form components that use v-model for automatic validation are more concise than v-decorator forms.
+- 🔥 Descriptions supports vertical layout.
+- 🔥 Progress.Circle supports gradient colors.
+- 🔥 Progress.Line supports gradient colors.
+- Breadcrumb
+  - 🎉 Breadcrumb.Item supports the `overlay` property to define drop-down menus.
+  - 🌟 Added `Breadcrumb.Separator` component, you can customize`separator`.
+- 🌟 TreeSelect's `showSearch` supports multiple selection mode.
+- 🌟 Timeline.Item adds `gray` color type, which can be used in incomplete or invalid state.
+- 🌟 Modal supports `closeIcon` property for customizing the close icon.
+- Upload
+  - 🌟 Upload provides `previewFile` property to customize the preview logic.
+  - 🌟 Upload adds `transformFile` to support converting files before uploading.
+  - 🌟 Upload supports previewing pictures in jfif format.
+  - 🌟 Added `showDownloadIcon` property for displaying download icons.
+- 🌟 Input.Search adds `loading` property, which is used to display the loading status.
+- 🌟 Grid's `gutter` property adds support for vertical spacing. Now you can set an array for`gutter`, the second value of the array represents the vertical spacing.
+- 🌟 message Added support for updating content with unique `key`.
+- 🌟 TextArea supports `allowClear`.
+- 🌟 Dropdown.Button supports `icon` property to customize the icon.
+- Drawer
+  - 🌟 Support `afterVisibleChange` property, which is triggered after the drawer animation is completed.
+  - 🌟 Support `ESC` shutdown.
+  - 🌟 Added `keyboard`, which allows the response to keyboard events to be turned on and off.
+- 🌟 TreeNode supports `checkable` property.
+- 🌟 Transfer supports `children` custom rendering list.
+- 🌟 Pagination supports `disabled` property.
+- 🌟 Steps support click to switch function.
+- Slider
+  - 🌟 Support `tooltipPlacement` to define the location of the tip.
+  - 🌟 Support `getTooltipPopupContainer` to allow custom container for the prompt.
+  - 🌟 Flip `trigger` direction when Sider is on the right.
+- 🌟 Calendar supports `headerRender` to customize header.
+- 🌟 Carousel supports custom panel pointing point locations.
+- 🌟 Collapse supports `expandIconPosition` property.
+- 🌟 Popconfirm adds `disabled` props, which are used to control whether clicking child elements pop up.
+- 🌟 Select supports `showArrow` in multi-select mode.
+- 🌟 Collapse.Panel added `extra`.
+- Card
+  - 🌟 Card component added `tabBarExtraContent` property.
+  - 🌟 Card.Grid added a hoverable property to allow floating effects to be disabled.
+- 🌟 Anchor.Link adds `target` attribute.
+- 🌟 TimePicker added `clearIcon` prop for custom clear icon.
+- Form
+  - 🌟 Support to configure the `colon` property directly on the Form.
+  - 🌟 Support `labelAlign` property.
+- Table
+  - 🌟 Table adds `getPopupContainer` property for setting various floating layer rendering nodes in the table.
+  - 💄 Adjust the style of the Table expand button.
+  - 🌟 Added `tableLayout` property, supports setting the table's`table-layout` layout, and enables `tableLayout =" fixed "` by default under fixed headers / columns, to solve the column alignment problem caused by the table layout automatically based on content .
+  - 🌟 Added `column.ellipsis` to support automatic omission of cell contents.
+  - 🌟 Added `scroll.scrollToFirstRowOnChange` property, which is used to set whether to scroll to the top of the table after page turning.   -Filter `filterDropdown` Added`visible` parameter to get the display status of the drop-down box.
+  - 🌟 The `title` method adds a`sortColumn` parameter to get the currently sorted column.   -Sort When sorting, the `sorter` parameter of`onChange` will always contain `column` information.
+- 🌟 Tree component supports `blockNode` property.
+- 🌟 RangePicker adds `separator` definition.
+- Empty
+  - 🌟 Empty supports the `imageStyle` property.
+  - 🌟 Empty `description` supports`false`.
+  - 🌟 Empty Supports access to preset pictures via `Empty.PRESENTED_IMAGE_DEFAULT` and`Empty.PRESENTED_IMAGE_SIMPLE`
+- 🌟 Badge supports custom colors.
+- 🐞 Fix the problem that the label of Steps is not centered.
+- 🐞 Fix cursor style problem of DatePicker and TimePicker.
+- 🐞 Fix `TreeSelect` custom icon is invalid [#1901](https://github.com/vueComponent/ant-design-vue/issues/1901)
+- 🐞 Fix `Tabs` keyboard left / right switching error [#1947](https://github.com/vueComponent/ant-design-vue/issues/1947)
+
+## 1.4.12
+
+`2020-03-03`
+
+- 🐞 Fix ts type error of `Modal` component [#1809](https://github.com/vueComponent/ant-design-vue/issues/1809)
+
+## 1.4.11
+
+`2020-02-12`
+
+- 🌟 DirectoryTree adds custom switcherIcon function [#1743](https://github.com/vueComponent/ant-design-vue/issues/1743)
+- 🌟 Add draggable table column width [example](https://www.antdv.com/components/table/#components-table-demo-resizable-column)
+- 🌟 Replace `this.$listeners` of all components to avoid repeated rendering of components [#1705](https://github.com/vueComponent/ant-design-vue/issues/1705)
+- 🐞 Fix ConfigProvider component error report error [7a4003](https://github.com/vueComponent/ant-design-vue/commit/7a40031955d520487dcaf9054a1280ae72230049)
+- 🐞 Fix placeholder does not disappear when custom input box of AutoComplete component [#1761](https://github.com/vueComponent/ant-design-vue/issues/1761)
+- 🐞 Fix Statistic.Countdown does not trigger finish event [#1731](https://github.com/vueComponent/ant-design-vue/pull/1731)
+- 🐞 Fix upload component preview image not refreshing [f74469](https://github.com/vueComponent/ant-design-vue/commit/f744690e929d9d6da03c5c513b3ac5497c6490ef)
+- 🐞 Fix TimePicker id is not unique [#1566](https://github.com/vueComponent/ant-design-vue/pull/1566)
+- 🐞 Fix Pagination pagination without animation [#1540](https://github.com/vueComponent/ant-design-vue/issues/1540)
+- 🐞 Fix drop-down list does not show empty elements when Cascader's option is empty array [#1701](https://github.com/vueComponent/ant-design-vue/issues/1540)
+- 🐞 Fix spellcheck rendering incorrect for Input component [#1707](https://github.com/vueComponent/ant-design-vue/issues/1707)
+- 🐞 Fix Tree component cannot customize icon [#1712](https://github.com/vueComponent/ant-design-vue/pull/1712)
+- 🐞 Fix SubMenu forceSubMenuRender property is invalid [#1668](https://github.com/vueComponent/ant-design-vue/issues/1668)
+- 🐞 Fix style of upload button is misaligned [#1742](https://github.com/vueComponent/ant-design-vue/pull/1742)
+
+## 1.4.10
+
+`2019-12-11`
+
+- 🐞 Fixed the left and right arrows of MonthPicker cannot be worked [#1543](https://github.com/vueComponent/ant-design-vue/issues/1543)
+
+## 1.4.9
+
+`2019-12-10`
+
+- 🐞 Fix body scrolling issue when `Modal` is opened [#1472](https://github.com/vueComponent/ant-design-vue/issues/1472)
+- 🐞 Fix `Drawer` wrapStyle not working [#1481](https://github.com/vueComponent/ant-design-vue/issues/1481)
+- 🐞 Fix `InputNumber` id mount position is incorrect [#1477](https://github.com/vueComponent/ant-design-vue/issues/1477)
+- 🐞 Fix `Tabs` nextClick event does not fire [#1489](https://github.com/vueComponent/ant-design-vue/pull/1489)
+- 🐞 Fix `MonthPicker` cannot be changed in open state [#1510](https://github.com/vueComponent/ant-design-vue/issues/1510)
+- 🐞 Fix the issue that `AutoComplete` does not disappear when entering Chinese [#1506](https://github.com/vueComponent/ant-design-vue/issues/1506)
+- 🐞 Fix the problem that the content cannot pop up when referencing different Vue variables [6362bf](https://github.com/vueComponent/ant-design-vue/commit/6362bf9edb441c0c0096beca1d2c8727003dbb15)
+- 🌟 `Table` `customRender` Add a third column parameter [#1513](https://github.com/vueComponent/ant-design-vue/pull/1513)
+- 🌟 `InputPassword` adds focus and blur methods [#1485](https://github.com/vueComponent/ant-design-vue/pull/1485)
+- 🐞 Fix `Tooltip` report error when using native html element [#1519](https://github.com/vueComponent/ant-design-vue/issues/1519)
+- 🐞 Fix `Menu` report error in edge browser [#1492](https://github.com/vueComponent/ant-design-vue/issues/1492)
+- 🐞 Fix empty centering of `Select` [#1445](https://github.com/vueComponent/ant-design-vue/pull/1445)
+- 🐞 Fix popup window component memory leak problem [#1483](https://github.com/vueComponent/ant-design-vue/pull/1483)
 
 ## 1.4.8
 
@@ -21,7 +240,7 @@
 
 `2019-11-27`
 
-- 🌟 `getPopupContainer` of`ConfigProvider` Added popup context as the second parameter for uniform configuration of `getPopupContainer` in`Modal` [7a3c88] (https://github.com/vueComponent/ant-design -vue / commit / 7a3c88107598b4b1cf6842d3254b43dc26103c14)
+- 🌟 `getPopupContainer` of`ConfigProvider` Added popup context as the second parameter for uniform configuration of `getPopupContainer` in`Modal` [7a3c88](https://github.com/vueComponent/ant-design -vue / commit / 7a3c88107598b4b1cf6842d3254b43dc26103c14)
 - 🐞 Fix `ConfigProvider` reporting error in Vue 2.5 [309baa](https://github.com/vueComponent/ant-design-vue/commit/309baa138a9c9a1885c17ef636c9132349024359)
 - 🐞 Fix `Menu` click event is triggered twice [#1450](https://github.com/vueComponent/ant-design-vue/issues/1427)
 - 🐞 Fix incorrect width of input box in `Select` [#1458](https://github.com/vueComponent/ant-design-vue/issues/1458)
@@ -340,12 +559,10 @@
 - 🎉 🎉 🎉 Publish the vscode plugin [ant-design-vue-helper](https://marketplace.visualstudio.com/items?itemName=ant-design-vue.vscode-ant-design-vue-helper)
 - 🎉 🎉 🎉 Optimize official website document interaction
 
-### Component features and styles are synchronized to antd version 3.11.6.
+  1.3.0 brings two new Components, a lot of exciting changes and new features.
 
-1.3.0 brings two new Components, a lot of exciting changes and new features.
-
-- 🔥 Added a new component [Comment](https://vue.ant.design/components/comment/)。
-- 🔥 dded a new component [ConfigProvider](https://vue.ant.design/components/config-provider/) for user to customize some global setting.
+- 🔥 Added a new component [Comment](https://www.antdv.com/components/comment/)。
+- 🔥 dded a new component [ConfigProvider](https://www.antdv.com/components/config-provider/) for user to customize some global setting.
 
 Component Fixes / Enhancements:
 
@@ -431,8 +648,6 @@ Component Fixes / Enhancements:
 ## 1.2.0
 
 `2018-12-16`
-
-### Synchronize with antd 3.10.x
 
 - 🔥🔥🔥 replaced font icons with svg icons which bring benefits below:：
   - Complete offline usage of icon, no dependency of alipay cdn font icon file and no more empty square during downloading than no need to deploy icon font files locally either.

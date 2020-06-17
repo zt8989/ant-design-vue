@@ -4,7 +4,7 @@ import ColGroup from './ColGroup';
 import TableHeader from './TableHeader';
 import TableRow from './TableRow';
 import ExpandableRow from './ExpandableRow';
-import { mergeProps } from '../../_util/props-util';
+import { mergeProps, getListeners } from '../../_util/props-util';
 import { connect } from '../../_util/store';
 function noop() {}
 const BaseTable = {
@@ -49,21 +49,20 @@ const BaseTable = {
         prefixCls,
         childrenColumnName,
         rowClassName,
-        // rowRef,
-        $listeners: {
-          rowClick: onRowClick = noop,
-          rowDoubleclick: onRowDoubleClick = noop,
-          rowContextmenu: onRowContextMenu = noop,
-          rowMouseenter: onRowMouseEnter = noop,
-          rowMouseleave: onRowMouseLeave = noop,
-        },
         customRow = noop,
       } = this.table;
+      const {
+        rowClick: onRowClick = noop,
+        rowDoubleclick: onRowDoubleClick = noop,
+        rowContextmenu: onRowContextMenu = noop,
+        rowMouseenter: onRowMouseEnter = noop,
+        rowMouseleave: onRowMouseLeave = noop,
+      } = getListeners(this.table);
       const { getRowKey, fixed, expander, isAnyColumnsFixed } = this;
 
       const rows = [];
 
-      for (let i = 0; i < renderData.length; i++) {
+      for (let i = 0; i < renderData.length; i += 1) {
         const record = renderData[i];
         const key = getRowKey(record, i);
         const className =
@@ -111,7 +110,7 @@ const BaseTable = {
                     record,
                     index: i,
                     prefixCls: rowPrefixCls,
-                    childrenColumnName: childrenColumnName,
+                    childrenColumnName,
                     columns: leafColumns,
                     rowKey: key,
                     ancestorKeys,
@@ -146,17 +145,18 @@ const BaseTable = {
 
   render() {
     const { sComponents: components, prefixCls, scroll, data, getBodyWrapper } = this.table;
-    const { expander, tableClassName, hasHead, hasBody, fixed } = this.$props;
+    const { expander, tableClassName, hasHead, hasBody, fixed, isAnyColumnsFixed } = this.$props;
 
     const tableStyle = {};
 
     if (!fixed && scroll.x) {
+      // 当有固定列时，width auto 会导致 body table 的宽度撑不开，从而固定列无法对齐
+      // 详情见：https://github.com/ant-design/ant-design/issues/22160
+      const tableWidthScrollX = isAnyColumnsFixed ? 'max-content' : 'auto';
       // not set width, then use content fixed width
-      if (scroll.x === true) {
-        tableStyle.tableLayout = 'fixed';
-      } else {
-        tableStyle.width = typeof scroll.x === 'number' ? `${scroll.x}px` : scroll.x;
-      }
+      tableStyle.width = scroll.x === true ? tableWidthScrollX : scroll.x;
+      tableStyle.width =
+        typeof tableStyle.width === 'number' ? `${tableStyle.width}px` : tableStyle.width;
     }
 
     const Table = hasBody ? components.table : 'table';

@@ -1,4 +1,4 @@
-const GitHub = require('@octokit/rest');
+const { Octokit } = require('@octokit/rest');
 const Base64 = require('js-base64').Base64;
 const fs = require('fs');
 const fse = require('fs-extra');
@@ -6,11 +6,11 @@ const path = require('path');
 
 const owner = 'ant-design';
 const repo = 'ant-design';
-const tag = '3.13.6';
+const tag = '3.26.13';
 const clientId = '5f6ccfdc4cdc69f8ba12';
 const clientSecret = process.env.CLIENT_SECRET;
 
-const github = new GitHub();
+const github = new Octokit();
 
 async function syncFiles(data = []) {
   for (const item of data) {
@@ -30,6 +30,7 @@ async function syncFiles(data = []) {
         if (!fs.existsSync(toPath)) {
           fse.ensureDirSync(toPath);
         }
+        // eslint-disable-next-line no-console
         console.log('update style: ', path.join(toPath, itemData.name.replace('.tsx', '.js')));
         const content = Base64.decode(itemData.content);
         fs.writeFileSync(path.join(toPath, itemData.name.replace('.tsx', '.js')), content);
@@ -38,7 +39,7 @@ async function syncFiles(data = []) {
   }
 }
 async function syncStyle() {
-  const { data = [] } = await github.repos.getContent({
+  const { data = [] } = await github.repos.getContents({
     owner,
     repo,
     path: 'components',
@@ -52,7 +53,7 @@ async function syncStyle() {
       if (item.name === 'style') {
         syncFiles([item]);
       } else {
-        const { data: itemData } = await github.repos.getContent({
+        const { data: itemData } = await github.repos.getContents({
           owner,
           repo,
           path: `${item.path}/style`,

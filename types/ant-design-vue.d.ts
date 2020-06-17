@@ -28,6 +28,7 @@ import { Drawer } from './drawer';
 import { Dropdown } from './dropdown/dropdown';
 import { Empty } from './empty';
 import { Form } from './form/form';
+import { FormModel } from './form-model/form';
 import { Icon } from './icon';
 import { Input } from './input/input';
 import { InputNumber } from './input-number';
@@ -35,6 +36,7 @@ import { Layout } from './layout/layout';
 import { List } from './list/list';
 import { LocaleProvider } from './locale-provider';
 import { Message } from './message';
+import { Mentions } from './mentions/mentions';
 import { Menu } from './menu/menu';
 import { Modal } from './modal';
 import { Notification } from './notification';
@@ -62,6 +64,9 @@ import { TimePicker } from './time-picker';
 import { Timeline } from './timeline/timeline';
 import { Tooltip } from './tootip/tooltip';
 import { Upload } from './upload';
+import { Result } from './result';
+import { Descriptions } from './descriptions/descriptions';
+import { PageHeader } from './page-header';
 
 /**
  * Install all ant-design-vue components into Vue.
@@ -97,6 +102,7 @@ export {
   Dropdown,
   Empty,
   Form,
+  FormModel,
   Icon,
   Input,
   InputNumber,
@@ -105,6 +111,7 @@ export {
   LocaleProvider,
   message,
   Menu,
+  Mentions,
   Modal,
   notification,
   Pagination,
@@ -132,4 +139,7 @@ export {
   Upload,
   Drawer,
   Skeleton,
+  Result,
+  Descriptions,
+  PageHeader,
 };

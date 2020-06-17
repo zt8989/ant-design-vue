@@ -2,7 +2,7 @@ import Checkbox from '../checkbox';
 import Radio from '../radio';
 import { SelectionBoxProps } from './interface';
 import BaseMixin from '../_util/BaseMixin';
-import { getOptionProps } from '../_util/props-util';
+import { getOptionProps, getListeners } from '../_util/props-util';
 
 export default {
   name: 'SelectionBox',
@@ -24,14 +24,6 @@ export default {
     }
   },
   methods: {
-    subscribe() {
-      const { store } = this;
-      this.unsubscribe = store.subscribe(() => {
-        const checked = this.getCheckState(this.$props);
-        this.setState({ checked });
-      });
-    },
-
     getCheckState(props) {
       const { store, defaultSelection, rowIndex } = props;
       let checked = false;
@@ -44,24 +36,29 @@ export default {
       }
       return checked;
     },
+    subscribe() {
+      const { store } = this;
+      this.unsubscribe = store.subscribe(() => {
+        const checked = this.getCheckState(this.$props);
+        this.setState({ checked });
+      });
+    },
   },
 
   render() {
     const { type, rowIndex, ...rest } = getOptionProps(this);
-    const { checked, $attrs, $listeners } = this;
+    const { checked } = this;
     const checkboxProps = {
       props: {
         checked,
         ...rest,
       },
-      attrs: $attrs,
-      on: $listeners,
+      on: getListeners(this),
     };
     if (type === 'radio') {
       checkboxProps.props.value = rowIndex;
       return <Radio {...checkboxProps} />;
-    } else {
-      return <Checkbox {...checkboxProps} />;
     }
+    return <Checkbox {...checkboxProps} />;
   },
 };

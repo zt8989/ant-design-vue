@@ -13,7 +13,7 @@ import {
 import warning from '../_util/warning';
 import LocaleReceiver from '../locale-provider/LocaleReceiver';
 import { getTwoToneColor, setTwoToneColor } from './twoTonePrimaryColor';
-import { filterEmpty, getClass } from '../_util/props-util';
+import { filterEmpty, getListeners } from '../_util/props-util';
 import Base from '../base';
 
 // Initial setting
@@ -23,7 +23,8 @@ const defaultTheme = 'outlined';
 let dangerousTheme;
 
 function renderIcon(h, locale, context) {
-  const { props, slots, listeners, data } = context;
+  const { $props: props, $slots } = context;
+  const listeners = getListeners(context);
   const {
     // affect inner <svg>...</svg>
     type,
@@ -36,16 +37,15 @@ function renderIcon(h, locale, context) {
     rotate,
     tabIndex,
   } = props;
-  const slotsMap = slots();
-  let children = filterEmpty(slotsMap.default);
+  let children = filterEmpty($slots.default);
   children = children.length === 0 ? undefined : children;
   warning(
     Boolean(type || Component || children),
+    'Icon',
     'Icon should have `type` prop or `component` prop or `children`.',
   );
 
   const classString = classNames({
-    ...getClass(context),
     [`anticon`]: true,
     [`anticon-${type}`]: !!type,
   });
@@ -61,90 +61,89 @@ function renderIcon(h, locale, context) {
       }
     : undefined;
 
-  let innerNode;
+  const innerSvgProps = {
+    attrs: {
+      ...svgBaseProps,
+      viewBox,
+    },
+    class: svgClassString,
+    style: svgStyle,
+  };
+  if (!viewBox) {
+    delete innerSvgProps.attrs.viewBox;
+  }
 
-  // component > children > type
-  if (Component) {
-    const innerSvgProps = {
-      attrs: {
-        ...svgBaseProps,
-        viewBox,
-      },
-      class: svgClassString,
-      style: svgStyle,
-    };
-    if (!viewBox) {
-      delete innerSvgProps.attrs.viewBox;
+  const renderInnerNode = () => {
+    // component > children > type
+    if (Component) {
+      return <Component {...innerSvgProps}>{children}</Component>;
     }
-
-    innerNode = <Component {...innerSvgProps}>{children}</Component>;
-  }
-  if (children) {
-    warning(
-      Boolean(viewBox) || (children.length === 1 && children[0].tag === 'use'),
-      'Make sure that you provide correct `viewBox`' +
-        ' prop (default `0 0 1024 1024`) to the icon.',
-    );
-    const innerSvgProps = {
-      attrs: {
-        ...svgBaseProps,
-      },
-      class: svgClassString,
-      style: svgStyle,
-    };
-    innerNode = (
-      <svg {...innerSvgProps} viewBox={viewBox}>
-        {children}
-      </svg>
-    );
-  }
-
-  if (typeof type === 'string') {
-    let computedType = type;
-    if (theme) {
-      const themeInName = getThemeFromTypeName(type);
+    if (children) {
       warning(
-        !themeInName || theme === themeInName,
-        `The icon name '${type}' already specify a theme '${themeInName}',` +
-          ` the 'theme' prop '${theme}' will be ignored.`,
+        Boolean(viewBox) || (children.length === 1 && children[0].tag === 'use'),
+        'Icon',
+        'Make sure that you provide correct `viewBox`' +
+          ' prop (default `0 0 1024 1024`) to the icon.',
+      );
+      const innerSvgProps = {
+        attrs: {
+          ...svgBaseProps,
+        },
+        class: svgClassString,
+        style: svgStyle,
+      };
+      return (
+        <svg {...innerSvgProps} viewBox={viewBox}>
+          {children}
+        </svg>
       );
     }
-    computedType = withThemeSuffix(
-      removeTypeTheme(alias(computedType)),
-      dangerousTheme || theme || defaultTheme,
-    );
-    innerNode = (
-      <VueIcon
-        focusable="false"
-        class={svgClassString}
-        type={computedType}
-        primaryColor={twoToneColor}
-        style={svgStyle}
-      />
-    );
-  }
+
+    if (typeof type === 'string') {
+      let computedType = type;
+      if (theme) {
+        const themeInName = getThemeFromTypeName(type);
+        warning(
+          !themeInName || theme === themeInName,
+          'Icon',
+          `The icon name '${type}' already specify a theme '${themeInName}',` +
+            ` the 'theme' prop '${theme}' will be ignored.`,
+        );
+      }
+      computedType = withThemeSuffix(
+        removeTypeTheme(alias(computedType)),
+        dangerousTheme || theme || defaultTheme,
+      );
+
+      return (
+        <VueIcon
+          focusable="false"
+          class={svgClassString}
+          type={computedType}
+          primaryColor={twoToneColor}
+          style={svgStyle}
+        />
+      );
+    }
+  };
   let iconTabIndex = tabIndex;
   if (iconTabIndex === undefined && 'click' in listeners) {
     iconTabIndex = -1;
   }
-  const { attrs, ...restDataProps } = data;
   // functional component not support nativeOn，https://github.com/vuejs/vue/issues/7526
   const iProps = {
-    ...restDataProps,
     attrs: {
-      ...attrs,
       'aria-label': type && `${locale.icon}: ${type}`,
       tabIndex: iconTabIndex,
     },
-    on: { ...listeners, ...data.nativeOn },
+    on: listeners,
     class: classString,
     staticClass: '',
   };
-  return <i {...iProps}>{innerNode}</i>;
+  return <i {...iProps}>{renderInnerNode()}</i>;
 }
 
 const Icon = {
-  functional: true,
   name: 'AIcon',
   props: {
     tabIndex: PropTypes.number,
@@ -157,11 +156,11 @@ const Icon = {
     twoToneColor: PropTypes.string,
     role: PropTypes.string,
   },
-  render(h, context) {
+  render(h) {
     return (
       <LocaleReceiver
         componentName="Icon"
-        scopedSlots={{ default: locale => renderIcon(h, locale, context) }}
+        scopedSlots={{ default: locale => renderIcon(h, locale, this) }}
       />
     );
   },

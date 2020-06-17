@@ -4,7 +4,7 @@ import BaseMixin from '../_util/BaseMixin';
 import scrollIntoView from 'dom-scroll-into-view';
 import { connect } from '../_util/store';
 import { noop, menuAllProps } from './util';
-import { getComponentFromProp } from '../_util/props-util';
+import { getComponentFromProp, getListeners } from '../_util/props-util';
 
 const props = {
   attribute: PropTypes.object,
@@ -40,16 +40,22 @@ const MenuItem = {
   mixins: [BaseMixin],
   isMenuItem: true,
   created() {
+    this.prevActive = this.active;
     // invoke customized ref to expose component to mixin
     this.callRef();
   },
   updated() {
     this.$nextTick(() => {
-      if (this.active) {
+      const { active, parentMenu, eventKey } = this.$props;
+      if (!this.prevActive && active && (!parentMenu || !parentMenu[`scrolled-${eventKey}`])) {
         scrollIntoView(this.$el, this.parentMenu.$el, {
           onlyScrollIfNeeded: true,
         });
+        parentMenu[`scrolled-${eventKey}`] = true;
+      } else if (parentMenu && parentMenu[`scrolled-${eventKey}`]) {
+        delete parentMenu[`scrolled-${eventKey}`];
       }
+      this.prevActive = active;
     });
     this.callRef();
   },
@@ -174,7 +180,7 @@ const MenuItem = {
     if (props.mode === 'inline') {
       style.paddingLeft = `${props.inlineIndent * props.level}px`;
     }
-    const listeners = { ...this.$listeners };
+    const listeners = { ...getListeners(this) };
     menuAllProps.props.forEach(key => delete props[key]);
     menuAllProps.on.forEach(key => delete listeners[key]);
     const liProps = {

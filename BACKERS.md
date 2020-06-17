@@ -2,6 +2,11 @@
 
 <br><br>
 
+<h2 align="center">企业赞助</h2>
+<p align="center">
+  <a href="http://www.powerproject.com.cn/" target="_blank"><img  width="193" src="http://www.powerproject.com.cn/wp-content/uploads/2019/08/2019080215041192.png" title="donation by wechat"></a>
+</p>
+
 <h2 align="center">Sponsors</h2>
 <p align="center">
   <a href="https://opencollective.com/ant-design-vue/sponsor/0/website" target="_blank"><img src="https://opencollective.com/ant-design-vue/sponsor/0/avatar.svg"></a>
@@ -33,10 +38,17 @@
   <a href="https://opencollective.com/ant-design-vue/backer/10/website" target="_blank"><img src="https://opencollective.com/ant-design-vue/backer/10/avatar.svg"></a>
 </p>
 
+<h2 align="center">Patreon</h2>
+
+<p align="center">
+<a href="https://www.mokeyjay.com" target="_blank"><img  width="64" style="border-radius: 50%;" src="https://www.mokeyjay.com/headimg.png" title="donation by Patreon"></a>
+</p>
+
 <h2 align="center">支付宝/微信</h2>
 
-### 使用支付宝/微信的赞助的用户，如需要添加名单，赞助后可发 github 账号到邮箱(415800467@qq.com)
+### 使用支付宝/微信的赞助的用户，如需要添加名单，赞助后可发 github 账号到邮箱(antdv@foxmail.com)
 
 - [fastgoo](https://github.com/fastgoo)
 - [sendya](https://github.com/sendya)
 - [limichange](https://github.com/limichange)
+- [LvHang](https://github.com/184005306)

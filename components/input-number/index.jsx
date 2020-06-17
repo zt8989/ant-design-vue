@@ -1,5 +1,5 @@
 import PropTypes from '../_util/vue-types';
-import { initDefaultProps, getOptionProps } from '../_util/props-util';
+import { initDefaultProps, getOptionProps, getListeners } from '../_util/props-util';
 import classNames from 'classnames';
 import Icon from '../icon';
 import VcInputNumber from '../vc-input-number/src';
@@ -12,7 +12,7 @@ export const InputNumberProps = {
   max: PropTypes.number,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   step: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  defaultValue: PropTypes.number,
+  defaultValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   tabIndex: PropTypes.number,
   disabled: PropTypes.bool,
   size: PropTypes.oneOf(['large', 'small', 'default']),
@@ -68,7 +68,7 @@ const InputNumber = {
       },
       class: inputNumberClass,
       ref: 'inputNumberRef',
-      on: this.$listeners,
+      on: getListeners(this),
     };
     return <VcInputNumber {...vcInputNumberprops} />;
   },

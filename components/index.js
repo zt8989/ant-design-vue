@@ -56,6 +56,7 @@ import { default as Divider } from './divider';
 import { default as Dropdown } from './dropdown';
 
 import { default as Form } from './form';
+import { default as FormModel } from './form-model';
 
 import { default as Icon } from './icon';
 
@@ -72,6 +73,8 @@ import { default as LocaleProvider } from './locale-provider';
 import { default as message } from './message';
 
 import { default as Menu } from './menu';
+
+import { default as Mentions } from './mentions';
 
 import { default as Modal } from './modal';
 
@@ -137,6 +140,11 @@ import { default as ConfigProvider } from './config-provider';
 
 import { default as Empty } from './empty';
 
+import { default as Result } from './result';
+
+import { default as Descriptions } from './descriptions';
+import { default as PageHeader } from './page-header';
+
 const components = [
   Base,
   Affix,
@@ -159,6 +167,7 @@ const components = [
   Divider,
   Dropdown,
   Form,
+  FormModel,
   Icon,
   Input,
   InputNumber,
@@ -166,6 +175,7 @@ const components = [
   List,
   LocaleProvider,
   Menu,
+  Mentions,
   Modal,
   Pagination,
   Popconfirm,
@@ -195,6 +205,9 @@ const components = [
   Comment,
   ConfigProvider,
   Empty,
+  Result,
+  Descriptions,
+  PageHeader,
 ];
 
 const install = function(Vue) {
@@ -243,6 +256,7 @@ export {
   Divider,
   Dropdown,
   Form,
+  FormModel,
   Icon,
   Input,
   InputNumber,
@@ -250,6 +264,7 @@ export {
   List,
   LocaleProvider,
   Menu,
+  Mentions,
   Modal,
   Pagination,
   Popconfirm,
@@ -279,6 +294,9 @@ export {
   Comment,
   ConfigProvider,
   Empty,
+  Result,
+  Descriptions,
+  PageHeader,
 };
 
 export default {

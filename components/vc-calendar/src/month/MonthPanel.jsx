@@ -1,12 +1,10 @@
 import PropTypes from '../../../_util/vue-types';
 import BaseMixin from '../../../_util/BaseMixin';
-import { hasProp } from '../../../_util/props-util';
+import { hasProp, getListeners } from '../../../_util/props-util';
 import MonthTable from './MonthTable';
 
 function goYear(direction) {
-  const next = this.sValue.clone();
-  next.add(direction, 'year');
-  this.setAndChangeValue(next);
+  this.changeYear(direction);
 }
 
 function noop() {}
@@ -25,6 +23,7 @@ const MonthPanel = {
     disabledDate: PropTypes.func,
     // onSelect: PropTypes.func,
     renderFooter: PropTypes.func,
+    changeYear: PropTypes.func.def(noop),
   },
 
   data() {
@@ -44,18 +43,13 @@ const MonthPanel = {
     },
   },
   methods: {
-    setAndChangeValue(value) {
-      this.setValue(value);
-      this.__emit('change', value);
-    },
-
     setAndSelectValue(value) {
       this.setValue(value);
       this.__emit('select', value);
     },
 
     setValue(value) {
-      if (!hasProp(this, 'value')) {
+      if (hasProp(this, 'value')) {
         this.setState({
           sValue: value,
         });
@@ -72,7 +66,6 @@ const MonthPanel = {
       rootPrefixCls,
       disabledDate,
       renderFooter,
-      $listeners = {},
     } = this;
     const year = sValue.year();
     const prefixCls = `${rootPrefixCls}-month-panel`;
@@ -92,7 +85,7 @@ const MonthPanel = {
             <a
               class={`${prefixCls}-year-select`}
               role="button"
-              onClick={$listeners.yearPanelShow || noop}
+              onClick={getListeners(this).yearPanelShow || noop}
               title={locale.yearSelect}
             >
               <span class={`${prefixCls}-year-select-content`}>{year}</span>
